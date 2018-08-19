@@ -1,0 +1,24 @@
+{
+  "profiles": {
+    "KycNotifications local dev settings": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "SettingsUrl": "token_to_dev_settings",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+      }
+    },
+    "KycNotifications local test settings": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "SettingsUrl": "token_to_test_settings",
+        "ASPNETCORE_ENVIRONMENT": "Staging",
+      }
+    },
+    "KycNotifications remote settings": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "SettingsUrl": "http://settings.lykke-settings.svc.cluster.local/your_token_KycNotificationsJob"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Lykke.Service.KycNotifications.Services</AssemblyName>
+    <RootNamespace>Lykke.Service.KycNotifications.Services</RootNamespace>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lykke.Service.KycNotifications.Core\Lykke.Service.KycNotifications.Core.csproj" />
+  </ItemGroup>
+</Project>
