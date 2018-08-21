@@ -32,38 +32,9 @@ namespace Lykke.Service.KycNotifications
                 {
                     logs.AzureTableName = "KycNotificationsLog";
                     logs.AzureTableConnectionStringResolver = settings => settings.KycNotificationsService.Db.LogsConnString;
-
-                    // TODO: You could add extended logging configuration here:
-                    /* 
-                    logs.Extended = extendedLogs =>
-                    {
-                        // For example, you could add additional slack channel like this:
-                        extendedLogs.AddAdditionalSlackChannel("KycNotifications", channelOptions =>
-                        {
-                            channelOptions.MinLogLevel = LogLevel.Information;
-                        });
-                    };
-                    */
+                    
                 };
-
-                // TODO: Extend the service configuration
-                /*
-                options.Extend = (sc, settings) =>
-                {
-                    sc
-                        .AddOptions()
-                        .AddAuthentication(MyAuthOptions.AuthenticationScheme)
-                        .AddScheme<MyAuthOptions, KeyAuthHandler>(MyAuthOptions.AuthenticationScheme, null);
-                };
-                */
-
-                // TODO: You could add extended Swagger configuration here:
-                /*
-                options.Swagger = swagger =>
-                {
-                    swagger.IgnoreObsoleteActions();
-                };
-                */
+                
             });
         }
 

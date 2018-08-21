@@ -4,7 +4,9 @@ using Common.Log;
 using Lykke.Common.Log;
 using Lykke.Cqrs;
 using Lykke.Cqrs.Configuration;
+using Lykke.Logs;
 using Lykke.Messaging;
+using Lykke.Messaging.Contract;
 using Lykke.Messaging.RabbitMq;
 using Lykke.Messaging.Serialization;
 using Lykke.Service.Kyc.Abstractions.Domain.Profile;
@@ -17,12 +19,11 @@ namespace Lykke.Service.KycNotifications.Modules
     public class CqrsModule : Module
     {
         private readonly AppSettings _settings;
-		private readonly ILogFactory _log;
+		private ILogFactory _log;
 
-        public CqrsModule(IReloadingManager<AppSettings> settingsManager, ILogFactory log)
+		public CqrsModule(IReloadingManager<AppSettings> settingsManager)
         {
-            _settings = settingsManager.CurrentValue;
-            _log = log;
+            _settings = settingsManager.CurrentValue;                  
         }
 
         protected override void Load(ContainerBuilder builder)
@@ -30,13 +31,21 @@ namespace Lykke.Service.KycNotifications.Modules
 
             builder.Register(context => new AutofacDependencyResolver(context)).As<IDependencyResolver>().SingleInstance();
 
+
 			var rabbitMqSettings = new RabbitMQ.Client.ConnectionFactory { Uri = _settings.KycNotificationsService.RabbitMQConnectionString };
-            var messagingEngine = new MessagingEngine(_log,
+
+			builder.Register(ctx => new MessagingEngine(ctx.Resolve<ILogFactory>(),
                 new TransportResolver(new Dictionary<string, TransportInfo>
                 {
-                    {"RabbitMq", new TransportInfo(rabbitMqSettings.Endpoint.ToString(), rabbitMqSettings.UserName, rabbitMqSettings.Password, "None", "RabbitMq")}
+                    {
+					    "RabbitMq",
+					    new TransportInfo(rabbitMqSettings.Endpoint.ToString(), rabbitMqSettings.UserName,
+					                      rabbitMqSettings.Password, "None", "RabbitMq")
+                    }
                 }),
-                new RabbitMqTransportFactory());
+                new RabbitMqTransportFactory(ctx.Resolve<ILogFactory>()))).As<IMessagingEngine>();
+
+            
 
             builder.RegisterType<NotificationProjection>();
 
@@ -46,9 +55,9 @@ namespace Lykke.Service.KycNotifications.Modules
 				var projection = ctx.Resolve<NotificationProjection>();
 
                 return new CqrsEngine(
-                    _log,
+					ctx.Resolve<ILogFactory>(),
                     ctx.Resolve<IDependencyResolver>(),
-                    messagingEngine,
+					ctx.Resolve<IMessagingEngine>(),
                     new DefaultEndpointProvider(),
                     true,
 					Register.DefaultEndpointResolver(new RabbitMqConventionEndpointResolver("RabbitMq", SerializationFormat.ProtoBuf, environment: _settings.KycNotificationsService.Environment)),
