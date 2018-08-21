@@ -45,4 +45,3 @@ SmsNotifications:
                 - AzureTableStorage
         QueueName:
             settings-key: SmsNotifications-QueueName
- }
