@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Lykke.Sdk.Settings;
+using Lykke.Service.KycNotifications.Core.Settings;
 
 namespace Lykke.Service.KycNotifications.Settings
 {
@@ -7,5 +8,6 @@ namespace Lykke.Service.KycNotifications.Settings
     public class AppSettings : BaseAppSettings
     {
         public KycNotificationsSettings KycNotificationsService { get; set; }
+		public LykkeKycWebsiteUrlSettings LykkeKycWebsiteUrlSettings { get; set; }
     }
 }

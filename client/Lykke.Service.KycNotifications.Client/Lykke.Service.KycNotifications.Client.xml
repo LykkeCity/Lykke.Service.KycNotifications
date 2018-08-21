@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lykke.Service.KycNotifications.Client</name>
+    </assembly>
+    <members>
+        <member name="M:Lykke.Service.KycNotifications.Client.AutofacExtension.RegisterKycNotificationsClient(Autofac.ContainerBuilder,Lykke.Service.KycNotifications.Client.KycNotificationsServiceClientSettings,System.Func{Lykke.HttpClientGenerator.HttpClientGeneratorBuilder,Lykke.HttpClientGenerator.HttpClientGeneratorBuilder})">
+            <summary>
+            Registers <see cref="T:Lykke.Service.KycNotifications.Client.IKycNotificationsClient"/> in Autofac container using <see cref="T:Lykke.Service.KycNotifications.Client.KycNotificationsServiceClientSettings"/>.
+            </summary>
+            <param name="builder">Autofac container builder.</param>
+            <param name="settings">KycNotifications client settings.</param>
+            <param name="builderConfigure">Optional <see cref="T:Lykke.HttpClientGenerator.HttpClientGeneratorBuilder"/> configure handler.</param>
+        </member>
+        <member name="T:Lykke.Service.KycNotifications.Client.IKycNotificationsApi">
+            <summary>
+            KycNotifications client API interface.
+            </summary>
+        </member>
+        <member name="T:Lykke.Service.KycNotifications.Client.IKycNotificationsClient">
+            <summary>
+            KycNotifications client interface.
+            </summary>
+        </member>
+        <member name="P:Lykke.Service.KycNotifications.Client.IKycNotificationsClient.Api">
+            <summary>Application Api interface</summary>
+        </member>
+        <member name="T:Lykke.Service.KycNotifications.Client.KycNotificationsClient">
+            <summary>
+            KycNotifications API aggregating interface.
+            </summary>
+        </member>
+        <member name="P:Lykke.Service.KycNotifications.Client.KycNotificationsClient.Api">
+            <summary>Inerface to KycNotifications Api.</summary>
+        </member>
+        <member name="M:Lykke.Service.KycNotifications.Client.KycNotificationsClient.#ctor(Lykke.HttpClientGenerator.IHttpClientGenerator)">
+            <summary>C-tor</summary>
+        </member>
+        <member name="T:Lykke.Service.KycNotifications.Client.KycNotificationsServiceClientSettings">
+            <summary>
+            KycNotifications client settings.
+            </summary>
+        </member>
+        <member name="P:Lykke.Service.KycNotifications.Client.KycNotificationsServiceClientSettings.ServiceUrl">
+            <summary>Service url.</summary>
+        </member>
+    </members>
+</doc>

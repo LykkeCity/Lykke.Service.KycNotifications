@@ -3,14 +3,14 @@
     "KycNotifications local dev settings": {
       "commandName": "Project",
       "environmentVariables": {
-        "SettingsUrl": "token_to_dev_settings",
+        "SettingsUrl": "appsettings.Development.json",
         "ASPNETCORE_ENVIRONMENT": "Development",
       }
     },
     "KycNotifications local test settings": {
       "commandName": "Project",
       "environmentVariables": {
-        "SettingsUrl": "token_to_test_settings",
+        "SettingsUrl": "appsettings.Staging.json",
         "ASPNETCORE_ENVIRONMENT": "Staging",
       }
     },
