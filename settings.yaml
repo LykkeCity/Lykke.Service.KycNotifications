@@ -29,9 +29,9 @@ LykkeKycWebsiteUrlSettings:
 PushNotificationsService:
     Db:
         LogsConnString:
-        settings-key: PushNotificationsService-LogsConnString
-        types:
-            - AzureTableStorage
+            settings-key: PushNotificationsService-LogsConnString
+            types:
+                - AzureTableStorage
     HubConnectionString:
         settings-key: PushNotificationsService-HubConnectionString
     HubName: 
