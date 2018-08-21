@@ -1,4 +1,4 @@
-﻿KycNotificationsSettings:
+﻿KycNotificationsService:
     Db:
         LogsConnString:
             settings-key: KycNotificationsService-LogsConnString
