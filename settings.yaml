@@ -5,7 +5,7 @@
             types:
                 - AzureTableStorage
     RabbitMQConnectionString:
-            settings-key: CqrsKycRabbitConnString
+            settings-key: CqrsRabbitConnString
             types:
                 - RabbitMq
     RetryDelayInMilliseconds: 3000
