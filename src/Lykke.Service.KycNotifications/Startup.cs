@@ -9,6 +9,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using Autofac.Core;
 
 namespace Lykke.Service.KycNotifications
 {
@@ -27,7 +28,6 @@ namespace Lykke.Service.KycNotifications
             return services.BuildServiceProvider<AppSettings>(options =>
             {
                 options.SwaggerOptions = _swaggerOptions;
-
                 options.Logs = logs =>
                 {
                     logs.AzureTableName = "KycNotificationsLog";
@@ -88,5 +88,6 @@ namespace Lykke.Service.KycNotifications
                 */
             });
         }
-    }
+	}
+
 }

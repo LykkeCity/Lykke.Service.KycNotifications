@@ -1,0 +1,48 @@
+﻿KycNotificationsSettings:
+    Db:
+        LogsConnString:
+            settings-key: KycNotificationsService-LogsConnString
+            types:
+                - AzureTableStorage
+    RabbitMQConnectionString:
+            settings-key: RabbitMQConnectionString
+    RetryDelayInMilliseconds: 3000
+    Environment: lykke.kyc-service
+   
+
+MonitoringServiceClient:
+    MonitoringServiceUrl:
+        settings-key: MonitoringServiceUrl       
+
+SlackNotifications:
+    AzureQueue:
+        ConnectionString:
+            settings-key: SlackNotificationsConnString
+            types:
+                - AzureTableStorage
+        QueueName: 
+            settings-key: SlackQueueName
+LykkeKycWebsiteUrlSettings: 
+    Url:
+       settings-key: LykkeKycWebsiteUrl
+
+PushNotificationsService:
+    Db:
+        LogsConnString:
+        settings-key: PushNotificationsService-LogsConnString
+        types:
+            - AzureTableStorage
+    HubConnectionString:
+        settings-key: PushNotificationsService-HubConnectionString
+    HubName: 
+         settings-key: PushNotificationsService-HubName
+
+SmsNotifications: 
+    AzureQueue:
+        ConnectionString:
+            settings-key: SmsNotifications-ConnectionString
+            types:
+                - AzureTableStorage
+        QueueName:
+            settings-key: SmsNotifications-QueueName
+ }
