@@ -47,9 +47,11 @@ SmsNotifications:
                 - AzureTableStorage
         QueueName:
             settings-key: SmsNotifications-QueueName
+          
 ClientAccountServiceClient: 
     ServiceUrl:
         settings-key: ClientAccountServiceClient_ServiceUrl
+
 PersonalDataServiceClient:
     ServiceUrl:
         settings-key: PersonalDataServiceClient_ServiceUrl
