@@ -30,6 +30,7 @@ namespace Lykke.Service.KycNotifications.Modules
 
         protected override void Load(ContainerBuilder builder)
         {
+			builder.RegisterInstance(_appSettings.CurrentValue.LykkeKycWebsiteUrlSettings);
 			builder.Register(ctx =>
 			{
 				return new PersonalDataService(_appSettings.CurrentValue.PersonalDataServiceClient, ctx.Resolve<ILogFactory>().CreateLog(this));

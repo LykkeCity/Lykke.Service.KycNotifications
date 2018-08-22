@@ -15,21 +15,21 @@ namespace Lykke.Service.KycNotifications.Projections
     public class NotificationProjection
     {
         private readonly ILogFactory _log;
-		private readonly IKycNotificationProvider<KycStatusChangedNotification> _kycNotificationProvider;
+        private readonly IKycNotificationService _kycNotificationService;
 
         public NotificationProjection(
             [NotNull] ILogFactory log,
-			[NotNull] IKycNotificationProvider<KycStatusChangedNotification> kycNotificationProvider)
+            [NotNull] IKycNotificationService kycNotificationService)
         {
             _log = log ?? throw new ArgumentNullException(nameof(log));
-			_kycNotificationProvider = kycNotificationProvider ?? throw new ArgumentNullException(nameof(kycNotificationProvider));
+            _kycNotificationService = kycNotificationService ?? throw new ArgumentNullException(nameof(kycNotificationService));
         }
       
         public async Task Handle(ChangeStatusEvent cmd)
         {
-			
+
             var message = new KycStatusChangedNotification(cmd.ClientId, cmd.ProfileType, cmd.NewStatus, cmd.OldStatus);
-			await _kycNotificationProvider.Send(message);
+            await _kycNotificationService.Send(message);
 
 
         }
