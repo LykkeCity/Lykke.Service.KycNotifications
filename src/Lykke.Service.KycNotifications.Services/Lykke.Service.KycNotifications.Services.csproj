@@ -13,7 +13,7 @@
     <PackageReference Include="Lykke.Messages" Version="1.9.0" />
     <PackageReference Include="Lykke.Service.ClientAccount.Client" Version="2.2.3" />
     <PackageReference Include="Lykke.Service.TemplateFormatter.Client" Version="1.0.54" />
-    <PackageReference Include="Lykke.Service.Kyc.Abstractions" Version="1.0.251" />
     <PackageReference Include="Lykke.Service.PersonalData" Version="2.0.2" />
+    <PackageReference Include="Lykke.Service.Kyc.Abstractions" Version="1.0.252" />
   </ItemGroup>
 </Project>
