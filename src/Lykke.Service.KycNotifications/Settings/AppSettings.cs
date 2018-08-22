@@ -16,6 +16,6 @@ namespace Lykke.Service.KycNotifications.Settings
         public PushNotificationsServiceSettings PushNotificationsService { get; set; }
 		public PersonalDataServiceClientSettings PersonalDataServiceClient { get; set; }
         public ClientAccountServiceClientSettings ClientAccountServiceClient { get; set; }
-		public KycServiceClientSettings DocumentsServiceV2Client { get; internal set; }
+		public KycServiceClientSettings KycServiceClient { get; internal set; }
 	}
 }

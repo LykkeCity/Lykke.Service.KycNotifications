@@ -2,6 +2,8 @@
 using AzureStorage.Queue;
 using Common.Log;
 using Lykke.Common.Log;
+using Lykke.Logs;
+using Lykke.Messages.Email;
 using Lykke.Service.ClientAccount.Client;
 using Lykke.Service.Kyc.Abstractions.Services;
 using Lykke.Service.Kyc.Client;
@@ -11,6 +13,7 @@ using Lykke.Service.KycNotifications.Services;
 using Lykke.Service.KycNotifications.Settings;
 using Lykke.Service.PersonalData.Client;
 using Lykke.Service.PersonalData.Contract;
+using Lykke.Service.TemplateFormatter;
 using Lykke.SettingsReader;
 
 namespace Lykke.Service.KycNotifications.Modules
@@ -34,7 +37,7 @@ namespace Lykke.Service.KycNotifications.Modules
 
 			builder.Register(ctx =>
             {
-				return new KycDocumentsServiceV2Client(_appSettings.CurrentValue.DocumentsServiceV2Client, ctx.Resolve<ILogFactory>());
+				return new KycDocumentsServiceV2Client(_appSettings.CurrentValue.KycServiceClient, ctx.Resolve<ILogFactory>());
 			}).As<IKycDocumentsServiceV2>().SingleInstance();
             
 			builder.RegisterInstance<IClientAccountClient>(new ClientAccountClient(_appSettings.CurrentValue.ClientAccountServiceClient.ServiceUrl));
@@ -50,6 +53,11 @@ namespace Lykke.Service.KycNotifications.Modules
             builder.RegisterInstance<IPushNotificationSender>(
 				new PushNotificationSender(_appSettings.CurrentValue.PushNotificationsService.HubConnectionString, _appSettings.CurrentValue.PushNotificationsService.HubName)
                 );
+
+			builder.RegisterEmailSenderViaAzureQueueMessageProducer(_appSettings.ConnectionString(x => x.KycNotificationsService.Db.ClientPersonalInfoConnString), "emailsqueue");
+
+			builder.RegisterTemplateFormatter(_appSettings.CurrentValue.KycNotificationsService.Service.TemplateFormatterUrl, LogFactory.Create().CreateLog(this));
+ 
         }
     }
 }

@@ -9,5 +9,6 @@ namespace Lykke.Service.KycNotifications.Settings
 		public string RabbitMQConnectionString { get; internal set; }
 		public object RetryDelayInMilliseconds { get; internal set; }
 		public string Environment { get; internal set; }
+		public ServiceSettings Service { get; internal set; }
 	}
 }

@@ -6,5 +6,6 @@ namespace Lykke.Service.KycNotifications.Settings
     {
         [AzureTableCheck]
         public string LogsConnString { get; set; }
-    }
+		public string ClientPersonalInfoConnString { get; set; }
+	}
 }
