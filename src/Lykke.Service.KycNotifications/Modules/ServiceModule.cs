@@ -1,7 +1,10 @@
 ﻿using Autofac;
 using AzureStorage.Queue;
 using Common.Log;
+using Lykke.Common.Log;
 using Lykke.Service.ClientAccount.Client;
+using Lykke.Service.Kyc.Abstractions.Services;
+using Lykke.Service.Kyc.Client;
 using Lykke.Service.KycNotifications.Core;
 using Lykke.Service.KycNotifications.Core.Services;
 using Lykke.Service.KycNotifications.Services;
@@ -15,17 +18,25 @@ namespace Lykke.Service.KycNotifications.Modules
     public class ServiceModule : Module
     {
         private readonly IReloadingManager<AppSettings> _appSettings;
-		private readonly ILog _log;
 
-		public ServiceModule(IReloadingManager<AppSettings> appSettings, ILog log)
+
+		public ServiceModule(IReloadingManager<AppSettings> appSettings)
         {
             _appSettings = appSettings;
-			_log = log;
         }
 
         protected override void Load(ContainerBuilder builder)
         {
-			builder.RegisterInstance<IPersonalDataService>(new PersonalDataService(_appSettings.CurrentValue.PersonalDataServiceClient, _log));
+			builder.Register(ctx =>
+			{
+				return new PersonalDataService(_appSettings.CurrentValue.PersonalDataServiceClient, ctx.Resolve<ILogFactory>().CreateLog(this));
+			}).As<IPersonalDataService>().SingleInstance();
+
+			builder.Register(ctx =>
+            {
+				return new KycDocumentsServiceV2Client(_appSettings.CurrentValue.DocumentsServiceV2Client, ctx.Resolve<ILogFactory>());
+			}).As<IKycDocumentsServiceV2>().SingleInstance();
+            
 			builder.RegisterInstance<IClientAccountClient>(new ClientAccountClient(_appSettings.CurrentValue.ClientAccountServiceClient.ServiceUrl));
 
 			builder.RegisterType<KycNotificationService>().As<IKycNotificationService>().SingleInstance();

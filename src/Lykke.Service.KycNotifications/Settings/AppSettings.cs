@@ -1,6 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Lykke.Sdk.Settings;
 using Lykke.Service.ClientAccount.Client;
+using Lykke.Service.Kyc.Client;
 using Lykke.Service.KycNotifications.Core.Settings;
 using Lykke.Service.PersonalData.Settings;
 
@@ -15,5 +16,6 @@ namespace Lykke.Service.KycNotifications.Settings
         public PushNotificationsServiceSettings PushNotificationsService { get; set; }
 		public PersonalDataServiceClientSettings PersonalDataServiceClient { get; set; }
         public ClientAccountServiceClientSettings ClientAccountServiceClient { get; set; }
-    }
+		public KycServiceClientSettings DocumentsServiceV2Client { get; internal set; }
+	}
 }
