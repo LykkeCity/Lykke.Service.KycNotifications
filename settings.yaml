@@ -54,8 +54,8 @@ ClientAccountServiceClient:
 
 PersonalDataServiceClient:
     ServiceUrl:
-        settings-key: PersonalDataServiceClient_ServiceUrl
+        settings-key: PersonalDataServiceUrl
     ServiceExternalUri:
-        settings-key: PersonalDataServiceClient_ServiceExternalUri
+        settings-key: PersonalDataServiceUrl
     ApiKey:
-        settings-key: PersonalDataServiceClient_ApiKey
+        settings-key: PersonalDataApiKey
