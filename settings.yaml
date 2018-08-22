@@ -53,7 +53,7 @@ ClientAccountServiceClient:
         settings-key: ClientAccountServiceClient_ServiceUrl
 
 PersonalDataServiceClient:
-    ServiceUrl:
+    ServiceUri:
         settings-key: PersonalDataServiceUrl
     ServiceExternalUri:
         settings-key: PersonalDataServiceUrl
