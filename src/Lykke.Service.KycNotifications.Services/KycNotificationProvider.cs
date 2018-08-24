@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Lykke.Messages.Email;
 using Lykke.Service.ClientAccount.Client;
 using Lykke.Service.Kyc.Abstractions.Domain.Documents;
+using Lykke.Service.Kyc.Abstractions.Domain.Documents.Types;
 using Lykke.Service.Kyc.Abstractions.Domain.Profile;
 using Lykke.Service.Kyc.Abstractions.Domain.Verification;
 using Lykke.Service.Kyc.Abstractions.Services;
@@ -79,7 +80,7 @@ namespace Lykke.Service.KycNotifications.Services
                     case nameof(KycStatus.NeedToFillData):
                         var documents = await _kycDocumentsService.GetCurrentDocumentsAsync(notification.ClientId);
                         var declinedDocuments = documents
-                            .Where(item => item.Status.Name == CheckDocumentPorcess.DeclinedState.Name)
+                            .Where(item => item.Status.Name == CheckDocumentPorcess.DeclinedState.Name && item.Type.Name != OtherDocument.ApiType)
                             .ToArray();
 
                         if (declinedDocuments.Length > 0)
