@@ -1,0 +1,74 @@
+﻿KycNotificationsService:
+    Db:
+        LogsConnString:
+            settings-key: KycNotificationsService-LogsConnString
+            types:
+                - AzureTableStorage
+        ClientPersonalInfoConnString:
+            settings-key: KycNotificationsService-ClientPersonalInfoConnString
+            types:
+                - AzureTableStorage
+    RabbitMQConnectionString:
+            settings-key: CqrsRabbitConnString
+            types:
+                - RabbitMq
+    RetryDelayInMilliseconds: 3000
+    Environment: lykke.kyc-service
+    Service:
+        TemplateFormatterUrl:
+            settings-key: TemplateFormatterUrl
+   
+
+MonitoringServiceClient:
+    MonitoringServiceUrl:
+        settings-key: MonitoringServiceUrl       
+
+SlackNotifications:
+    AzureQueue:
+        ConnectionString:
+            settings-key: SlackNotificationsConnString
+            types:
+                - AzureTableStorage
+        QueueName: 
+            settings-key: SlackQueueName
+LykkeKycWebsiteUrlSettings: 
+    Url:
+       settings-key: LykkeKycWebsiteUrl
+
+PushNotificationsService:
+    Db:
+        LogsConnString:
+            settings-key: PushNotificationsService-LogsConnString
+            types:
+                - AzureTableStorage
+    HubConnectionString:
+        settings-key: PushNotificationsService-HubConnectionString
+    HubName: 
+         settings-key: PushNotificationsService-HubName
+
+SmsNotifications: 
+    AzureQueue:
+        ConnectionString:
+            settings-key: SmsNotifications-ConnectionString
+            types:
+                - AzureTableStorage
+        QueueName:
+            settings-key: SmsNotifications-QueueName
+          
+ClientAccountServiceClient: 
+    ServiceUrl:
+        settings-key: ClientAccountServiceClient_ServiceUrl
+
+PersonalDataServiceClient:
+    ServiceUri:
+        settings-key: PersonalDataServiceUrl
+    ServiceExternalUri:
+        settings-key: PersonalDataServiceUrl
+    ApiKey:
+        settings-key: PersonalDataApiKey
+
+KycServiceClient:
+    ServiceUri:
+        settings-key: KycServiceClient_ServiceUri
+    ApiKey:
+        settings-key: KycServiceClient_ApiKey

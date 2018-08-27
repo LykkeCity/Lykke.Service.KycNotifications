@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Lykke.Service.KycNotifications.Services</AssemblyName>
+    <RootNamespace>Lykke.Service.KycNotifications.Services</RootNamespace>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lykke.Service.KycNotifications.Core\Lykke.Service.KycNotifications.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Lykke.AzureStorage" Version="8.10.0" />
+    <PackageReference Include="Lykke.Messages" Version="1.9.0" />
+    <PackageReference Include="Lykke.Service.ClientAccount.Client" Version="2.2.3" />
+    <PackageReference Include="Lykke.Service.TemplateFormatter.Client" Version="1.0.54" />
+    <PackageReference Include="Lykke.Service.Kyc.Abstractions" Version="1.0.252" />
+    <PackageReference Include="Lykke.Service.PersonalData" Version="1.0.77" />
+  </ItemGroup>
+</Project>
