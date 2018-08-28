@@ -9,9 +9,8 @@
             types:
                 - AzureTableStorage
     RabbitMQConnectionString:
-            settings-key: CqrsRabbitConnString
-            types:
-                - RabbitMq
+        settings-key: KycShared-CqrsRabbitConnString
+        types: [RabbitMq]
     RetryDelayInMilliseconds: 3000
     Environment: lykke.kyc-service
     Service:
